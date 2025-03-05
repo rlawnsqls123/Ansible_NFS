@@ -1,0 +1,9 @@
+
+# Ignore SSH private keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+.ssh/
+inventory.yaml
+

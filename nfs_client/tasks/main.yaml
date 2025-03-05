@@ -1,0 +1,23 @@
+---
+- name: Install NFS Client
+  package:
+    name: nfs-utils
+    state: present
+
+- name: Create mount directory
+  file:
+    path: /mnt/nfs_share
+    state: directory
+    mode: '0755'
+
+- name: Configure /etc/fstab for persistent NFS mount
+  template:
+    src: fstab.j2
+    dest: /etc/fstab
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Mount NFS Share
+  command: mount -a
+

@@ -1,0 +1,19 @@
+---
+- name: Install NFS Server
+  package:
+    name: nfs-utils
+    state: present
+
+- name: Create NFS export directroy
+  file:
+    path: /export/nfs_share
+    state: directory
+    owner: nobody
+    group: nobody
+    mode: '0777'
+
+- name: Configure /etc/exports
+  template:
+    src: exports.j2
+    dest: /etc/exports
+  notify: Restart NFS Service

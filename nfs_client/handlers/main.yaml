@@ -1,0 +1,4 @@
+---
+- name: Reload NFS Mount
+  command: mount -a
+
